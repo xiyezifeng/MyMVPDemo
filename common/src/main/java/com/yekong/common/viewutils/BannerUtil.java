@@ -13,8 +13,6 @@ import com.youth.banner.loader.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.yekong.common.constant.Constant.BANNER_DEBUG;
-
 /**
  * Created by xigua on 2017/10/17.
  */
@@ -29,16 +27,22 @@ public class BannerUtil {
         list.add("http://img2.imgtn.bdimg.com/it/u=3121864619,2165036605&fm=26&gp=0.jpg");
     }
 
-    public static void initBanner(Banner banner, ArrayList<String> images, final BannerClickLinsener linsener) {
+    /**
+     * @param banner
+     * @param defaultData false 显示具体数据,true 显示默认数据
+     * @param images 真实数据
+     * @param linsener 点击回调
+     */
+    public static void initBanner(Banner banner,boolean  defaultData , ArrayList<String> images, final BannerClickLinsener linsener) {
         //设置banner样式
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
         //设置图片集合
-        if (!BANNER_DEBUG)
-            banner.setImages(images);
-        else
+        if (defaultData)
             banner.setImages(list);
+        else
+            banner.setImages(images);
         //设置banner动画效果
         banner.setBannerAnimation(Transformer.Default);
         /*//设置标题集合（当banner样式有显示title时）

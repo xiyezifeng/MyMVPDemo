@@ -87,7 +87,7 @@ public class DemoBarActivity extends BaseToolbarActivity<DemoPresenter, DemoMode
         super.initView();
         text = getView(R.id.text);
         text.setText("demo activity");
-        text.setOnClickListener(view -> startActivity(StudentActivity.class));
+        text.setOnClickListener(view -> startActivity(DemoPhotoChooseActivity.class));
     }
 
 

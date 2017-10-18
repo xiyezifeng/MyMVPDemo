@@ -7,8 +7,6 @@ import com.yekong.common.rxutils.BaseConsumer;
 import com.yekong.mymvpdemo.home.constitute.DemoBarConstitute;
 
 import io.reactivex.Observable;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 
 /**
  * Created by xigua on 2017/10/16.
@@ -34,12 +32,7 @@ public class DemoPresenter extends DemoBarConstitute.Presenter{
     @Override
     public void getList() {
         Observable<String> data = model.getList();
-        data.subscribe(new Consumer<String>() {
-            @Override
-            public void accept(@NonNull String s) throws Exception {
-                action.getList(s);
-            }
-        });
+        data.subscribe(s -> action.getList(s));
     }
 
     @Override

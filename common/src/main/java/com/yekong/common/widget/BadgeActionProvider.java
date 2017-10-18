@@ -15,6 +15,7 @@ import com.yekong.common.R;
 
 
 /**
+ * 自定义menu item，可实现右上角的数字显示变换
  * Created by xigua on 2017/9/1.
  */
 

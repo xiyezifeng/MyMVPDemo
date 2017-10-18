@@ -48,6 +48,7 @@ public class ImagePickerUtil {
         imagePicker.setOutPutX(1000);//保存文件的宽度。单位像素
         imagePicker.setOutPutY(1000);//保存文件的高度。单位像素
     }
+
     public static final int REQUEST_CODE_SELECT = 777;
 
     public static void chooseImage(Context context){

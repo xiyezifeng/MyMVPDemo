@@ -76,9 +76,7 @@ public abstract class BaseFragment<T extends BasePresenter , E extends BaseModel
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-//        if (!isInitData && isInit && !viewInit) {
         isCanLoadData();
-//        }
     }
     /**
      * 是否可以加载数据
@@ -137,6 +135,8 @@ public abstract class BaseFragment<T extends BasePresenter , E extends BaseModel
     protected void startActivity(Class object){
         startActivity(new Intent(context,object));
     }
+    protected void startActivity(Class object , Bundle bundle){startActivity(new Intent(context,object),bundle);}
+    protected void startActivity(Class object , int code){startActivityForResult(new Intent(context,object),code);}
 
     public abstract void setPresenter();
     public abstract int getViewLayoutId();

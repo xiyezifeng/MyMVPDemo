@@ -10,9 +10,9 @@ import java.util.ArrayList;
  * Created by xigua on 2017/10/17.
  */
 
-public class BaseFragmentViewPagerAdapter extends FragmentPagerAdapter{
+public class FragmentViewPagerAdapter extends FragmentPagerAdapter{
     private ArrayList<Fragment> fragments;
-    public BaseFragmentViewPagerAdapter(FragmentManager fm,ArrayList<Fragment> fragments) {
+    public FragmentViewPagerAdapter(FragmentManager fm,ArrayList<Fragment> fragments) {
         super(fm);
         this.fragments = fragments;
     }

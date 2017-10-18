@@ -2,13 +2,19 @@ package com.yekong.common.baseapi;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.yekong.common.baseapp.BaseApplication;
+import com.zxy.tiny.Tiny;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
@@ -76,4 +82,44 @@ public class BaseApi {
         return apiAdapter;
     }
 
+    /**
+     * 文件上传模板
+     */
+    public void uploadFile(ArrayList<String> files ,OnParamsCallback callback){
+        final MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);//表单类型
+        /*if (params != null) {
+//            builder.addFormDataPart("data", buildParams(api,params));//ParamKey.TOKEN 自定义参数key常量类，即参数名
+            Set<String> keys = params.keySet();
+            Iterator<String > iterator = keys.iterator();
+            while (iterator.hasNext()) {
+                String key = iterator.next();
+                String value = params.get(key);
+                builder.addFormDataPart(key,value);
+            }
+        }*/
+        Tiny.FileCompressOptions options = new Tiny.FileCompressOptions();
+        String[] fs = new String[files.size()];
+        for (int i = 0; i < files.size(); i++) {
+            fs[i] = files.get(i);
+        }
+        if (files.size() > 0) {
+            //压缩
+            Tiny.getInstance().source(fs).batchAsFile().withOptions(options).batchCompress((isSuccess, outfile) -> {
+                if (isSuccess) {
+                    int i1 = 0;
+                    for (String path1 : outfile) {
+                        File file = new File(path1);
+                        builder.addFormDataPart("files" + i1, file.getName(), RequestBody.create(MediaType.parse("*/*"), file));
+                        i1++;
+                    }
+                    callback.onCallBack(builder.build().parts());
+                }else{
+                    callback.onCallBack(null);
+                }
+            });
+        }
+    }
+    public interface OnParamsCallback{
+        void onCallBack(List<MultipartBody.Part> body);
+    }
 }

@@ -39,4 +39,8 @@ public class UserActivity extends BaseToolbarActivity<UserPresenter,UserModel> i
     }
 
 
+    @Override
+    public void upload(boolean status) {
+
+    }
 }

@@ -8,8 +8,6 @@ import com.yekong.common.storage.SharedUtil;
 import me.drakeet.library.CrashWoodpecker;
 import me.drakeet.library.PatchMode;
 
-import static com.yekong.common.constant.Constant.CRASH;
-
 /**
  * Created by xigua on 2017/10/17.
  */
@@ -22,16 +20,17 @@ public class BaseApplication extends Application{
         super.onCreate();
         instance = this;
         MultiDex.install(this);
-        if (CRASH)
+        SharedUtil.getInstance().init(instance);
+    }
+
+    public void reagisterCrash(String name){
         CrashWoodpecker.instance()
-                .withKeys("widget", getApplicationInfo().packageName)
+                .withKeys("widget", name)
                 .setPatchMode(PatchMode.SHOW_LOG_PAGE)
                 .setPatchDialogUrlToOpen("https://drakeet.me")
                 .setPassToOriginalDefaultHandler(true)
                 .flyTo(this);
-        SharedUtil.getInstance().init(instance);
     }
-
     public static Application getInstance() {
         return instance;
     }

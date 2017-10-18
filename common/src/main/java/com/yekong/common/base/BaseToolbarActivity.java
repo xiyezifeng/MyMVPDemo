@@ -1,10 +1,14 @@
 package com.yekong.common.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
 
 import com.yekong.common.R;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by xigua on 2017/10/16.
@@ -14,6 +18,12 @@ public abstract class BaseToolbarActivity<T extends BasePresenter, E extends Bas
 
     public TextView title;
     public Toolbar toolbar;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+    }
 
     @Override
     public void initView() {

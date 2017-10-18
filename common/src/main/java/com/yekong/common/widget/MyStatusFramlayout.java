@@ -14,6 +14,8 @@ import com.yekong.common.R;
 
 
 /**
+ * 带页面状态的framlayout
+ * 可显示 error  loading  empty 页面
  * Created by xigua on 2017/8/21.
  */
 

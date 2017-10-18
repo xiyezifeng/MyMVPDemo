@@ -2,9 +2,7 @@ package com.yekong.mymvpdemo.home.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
 
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.yekong.common.base.BaseToolbarActivity;
@@ -28,10 +26,7 @@ import butterknife.ButterKnife;
  */
 
 public class StudentActivity extends BaseToolbarActivity<SdudentPresenter,SdudentModel> implements SdudentConsitute.View, ItemClickListener {
-    @BindView(R.id.toolbar_title)
-    TextView toolbarTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.tk_layout)
@@ -66,7 +61,7 @@ public class StudentActivity extends BaseToolbarActivity<SdudentPresenter,Sduden
         super.initView();
         TKLayoutUtil.initRecylerViewLinear(recyclerView,this);
         TKLayoutUtil.initTwRefreshLayout(tkLayout,this);
-        recyclerView.addItemDecoration(new RecyclerViewDriver(1,1,0,0));
+        recyclerView.addItemDecoration(new RecyclerViewDriver(0,1,0,0));
         adapter = new SdudentAdapter(this,this,null);
         recyclerView.setAdapter(adapter);
     }

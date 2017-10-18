@@ -89,6 +89,8 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
     protected void startActivity(Class object){
         startActivity(new Intent(context,object));
     }
+    protected void startActivity(Class object , Bundle bundle){startActivity(new Intent(context,object),bundle);}
+    protected void startActivity(Class object , int code){startActivityForResult(new Intent(context,object),code);}
 
     public abstract void setPresenter();
     public abstract int getViewLayoutId();
