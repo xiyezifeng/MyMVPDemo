@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.jaeger.library.StatusBarUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.yekong.common.utils.LogUtils;
 
@@ -86,6 +87,9 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
         return (V) findViewById(id);
     }
 
+    public void setBarColor(int color , int alpha){
+        StatusBarUtil.setColor(this, getResources().getColor(color),alpha);
+    }
     protected void startActivity(Class object){
         startActivity(new Intent(context,object));
     }
@@ -96,4 +100,5 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
     public abstract int getViewLayoutId();
     public abstract void initData();
     public abstract void initView();
+
 }

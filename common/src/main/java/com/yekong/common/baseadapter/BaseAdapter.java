@@ -49,6 +49,6 @@ public abstract class BaseAdapter<M> extends RecyclerView.Adapter {
         return list == null?0:list.size();
     }
     public abstract RecyclerView.ViewHolder getViewHolder(Context context , ViewGroup parent , int viewType);
-    public abstract void onBindView(RecyclerView.ViewHolder holder , int position , M m);
+    public abstract void onBindView(RecyclerView.ViewHolder h , int p , M m);
     public abstract int getViewType(int position);
 }

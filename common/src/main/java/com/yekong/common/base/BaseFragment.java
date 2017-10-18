@@ -54,6 +54,8 @@ public abstract class BaseFragment<T extends BasePresenter , E extends BaseModel
         return rootView;
     }
 
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
