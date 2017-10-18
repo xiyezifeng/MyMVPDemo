@@ -2,8 +2,8 @@ package com.yekong.common.rxutils;
 
 import android.content.Context;
 
+import com.alibaba.fastjson.JSON;
 import com.yekong.common.baseentity.BaseEntity;
-import com.yekong.common.utils.GsonUtil;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
@@ -29,8 +29,7 @@ public class BaseConsumer implements Consumer<String> {
         }else if (body.equals("error")) {
             listenter.onError(-1,"error");
         }else{
-//            BaseEntity entity = JSON.parseObject(body, BaseEntity.class);
-            BaseEntity entity = GsonUtil.getInstance().getModel(body, BaseEntity.class);
+            BaseEntity entity = JSON.parseObject(body, BaseEntity.class);
             if (null != entity)
                 listenter.onSuccess(entity);
             else

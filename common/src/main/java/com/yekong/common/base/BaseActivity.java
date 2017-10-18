@@ -45,10 +45,10 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
         setPresenter();
         if (getViewLayoutId()>0) {
             setContentView(getViewLayoutId());
+            unbinder = ButterKnife.bind(this);
             initView();
             initData();
         }
-        unbinder = ButterKnife.bind(this);
     }
 
     @Override

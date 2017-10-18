@@ -3,6 +3,8 @@ package com.yekong.common.baseapp;
 import android.app.Application;
 import android.support.multidex.MultiDex;
 
+import com.yekong.common.storage.SharedUtil;
+
 import me.drakeet.library.CrashWoodpecker;
 import me.drakeet.library.PatchMode;
 
@@ -27,6 +29,7 @@ public class BaseApplication extends Application{
                 .setPatchDialogUrlToOpen("https://drakeet.me")
                 .setPassToOriginalDefaultHandler(true)
                 .flyTo(this);
+        SharedUtil.getInstance().init(instance);
     }
 
     public static Application getInstance() {

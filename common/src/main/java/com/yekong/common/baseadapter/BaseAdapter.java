@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
+ * M为数据类型
  * Created by xigua on 2017/10/17.
  */
 
@@ -15,9 +16,10 @@ public abstract class BaseAdapter<M> extends RecyclerView.Adapter {
     public Context context;
     private List<M> list;
 
-    public BaseAdapter(ItemClickListener listener, Context context) {
+    public BaseAdapter(ItemClickListener listener, Context context , List<M> list) {
         this.listener = listener;
         this.context = context;
+        this.list = list;
     }
 
     public void setList(List<M> list) {

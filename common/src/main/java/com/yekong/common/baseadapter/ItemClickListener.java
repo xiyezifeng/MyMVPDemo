@@ -10,5 +10,5 @@ public interface ItemClickListener<M> {
     //子view点击
     void onViewClick(int id, int position, M model);
     //布局view点击
-    void onRootViewClick(View view, int position, M model);
+    void onItemClick(View view, int position, M model);
 }

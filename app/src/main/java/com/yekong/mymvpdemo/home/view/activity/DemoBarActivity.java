@@ -10,7 +10,6 @@ import com.yekong.mymvpdemo.R;
 import com.yekong.mymvpdemo.home.constitute.DemoBarConstitute;
 import com.yekong.mymvpdemo.home.model.DemoModel;
 import com.yekong.mymvpdemo.home.presenter.DemoPresenter;
-import com.yekong.mymvpdemo.user.view.UserActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -88,7 +87,7 @@ public class DemoBarActivity extends BaseToolbarActivity<DemoPresenter, DemoMode
         super.initView();
         text = getView(R.id.text);
         text.setText("demo activity");
-        text.setOnClickListener(view -> startActivity(UserActivity.class));
+        text.setOnClickListener(view -> startActivity(StudentActivity.class));
     }
 
 
