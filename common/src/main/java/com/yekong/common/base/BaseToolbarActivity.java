@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.yekong.common.R;
 
-import butterknife.ButterKnife;
 
 /**
  * Created by xigua on 2017/10/16.
@@ -16,13 +15,19 @@ import butterknife.ButterKnife;
 
 public abstract class BaseToolbarActivity<T extends BasePresenter, E extends BaseModel>  extends BaseActivity <T ,E>{
 
-    public TextView title;
-    public Toolbar toolbar;
+
+//    TextView title;
+//
+//    Toolbar toolbar;
+
+//    @BindView(R.id.toolbar_title)
+    TextView title;
+//    @BindView(R2.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
     }
 
     @Override
@@ -30,7 +35,7 @@ public abstract class BaseToolbarActivity<T extends BasePresenter, E extends Bas
         initToolBarData();
     }
     public void initToolBarData() {
-        toolbar = getView(R.id.toolbar);
+        toolbar = getView(R.id.bar_toolbar);
         title = getView(R.id.toolbar_title);
         toolbar.setTitle("");
         String t = getBarTitle();
@@ -65,7 +70,7 @@ public abstract class BaseToolbarActivity<T extends BasePresenter, E extends Bas
         this.title.setText(title);
     }
     public String getBarTitle(){
-        return "app";
+        return "";
     }
     public boolean isShowLeft(){return true;}
     public int leftBtnResId(){return 0;}

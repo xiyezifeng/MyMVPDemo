@@ -2,6 +2,7 @@ package com.yekong.common.baseadapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
@@ -42,6 +43,10 @@ public abstract class BaseAdapter<M> extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         onBindView(holder,position,list.get(position));
+    }
+
+    public View getView(int id){
+        return View.inflate(context, id, null);
     }
 
     @Override

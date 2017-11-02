@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ui_title_text_size">18sp</dimen>
+    <dimen name="ui_weight_6_size">22sp</dimen>
+    <dimen name="ui_weight_5_size">20sp</dimen>
+    <dimen name="ui_weight_4_size">18sp</dimen>
+    <dimen name="ui_weight_3.5_size">17sp</dimen>
+    <dimen name="ui_weight_3_size">16sp</dimen>
+    <dimen name="ui_weight_2.5_size">15sp</dimen>
+    <dimen name="ui_weight_2_size">14sp</dimen>
+    <dimen name="ui_weight_1.5_size">13sp</dimen>
+    <dimen name="ui_weight_1_size">12sp</dimen>
+    <dimen name="ui_weight_0_size">10sp</dimen>
+
+
+</resources>

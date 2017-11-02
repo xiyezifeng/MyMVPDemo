@@ -13,7 +13,6 @@ import okhttp3.Cache;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.RequestBody;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -48,18 +47,18 @@ public class BaseApi {
                     .connectTimeout(10, TimeUnit.SECONDS)
                     .writeTimeout(15, TimeUnit.SECONDS)
                     .readTimeout(30, TimeUnit.SECONDS)
-                    .addInterceptor(chain -> {
-                        Request request = chain.request()
-                                .newBuilder()
-                                .url(BASEURL)
-                                .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-//                                .addHeader("Accept-Encoding", "gzip, deflate")
-//                                .addHeader("Connection", "keep-alive")
-//                                .addHeader("Accept", "*/*")
-//                                .addHeader("Cookie", "key=value")
-                                .build();
-                        return chain.proceed(request);
-                    })
+//                    .addInterceptor(chain -> {
+//                        Request request = chain.request()
+//                                .newBuilder()
+//                                .url(BASEURL)
+//                                .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+////                                .addHeader("Accept-Encoding", "gzip, deflate")
+////                                .addHeader("Connection", "keep-alive")
+////                                .addHeader("Accept", "*/*")
+////                                .addHeader("Cookie", "key=value")
+//                                .build();
+//                        return chain.proceed(request);
+//                    })
                     .cache(cache)
                     .build();
         }
@@ -121,5 +120,13 @@ public class BaseApi {
     }
     public interface OnParamsCallback{
         void onCallBack(List<MultipartBody.Part> body);
+    }
+
+    public void setOkHttpClient(OkHttpClient okHttpClient) {
+        this.okHttpClient = okHttpClient;
+    }
+
+    public static void setRetrofit(Retrofit apiAdapter) {
+        BaseApi.apiAdapter = apiAdapter;
     }
 }

@@ -18,6 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxUtils {
 
+
     public static <T> Observable<T> createObserver(Observable<T> observable , Context context , boolean showDialog , String dialogMessage){
         BaseDialog dialog = null;
         if (showDialog) {
@@ -33,7 +34,6 @@ public class RxUtils {
         return observable
                 .compose(((RxAppCompatActivity)context).bindToLifecycle())
                 .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext(throwable -> {
                     return Observable.just((T)"error")

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/comm_public_toolbar" />
+    <com.yekong.common.widget.MyStatusFramlayout
+        android:id="@+id/status_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            >
+
+            <include layout="@layout/comm_view_tklayout" />
+        </RelativeLayout>
+    </com.yekong.common.widget.MyStatusFramlayout>
+</LinearLayout>

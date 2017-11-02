@@ -19,7 +19,6 @@
         <item name="colorControlNormal">#FFFFFF</item>
         <item name="actionMenuTextColor">@android:color/white</item>
         <item name="actionMenuTextAppearance">@style/ToolbarMenuTextSize</item>
-
     </style>
 
     <style name="ToolbarMenuTextSize" parent="@style/TextAppearance.AppCompat.Menu">

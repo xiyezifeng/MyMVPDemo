@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.neenbedankt.android-apt'
+
+apply plugin: 'com.jakewharton.butterknife'
+
 
 android {
     compileSdkVersion 26
@@ -36,8 +39,17 @@ dependencies {
     compile 'com.android.support:design:26.+'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jakewharton:butterknife:8.0.1'
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
-    compile project(':common')
+//    compile 'com.jakewharton:butterknife:8.0.1'
+//    apt 'com.jakewharton:butterknife-compiler:8.0.1'
 
+
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    compile project(':common')
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+}
+repositories {
+    mavenCentral()
 }

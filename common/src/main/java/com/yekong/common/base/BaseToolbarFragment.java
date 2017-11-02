@@ -30,7 +30,7 @@ public abstract class BaseToolbarFragment<T extends BasePresenter, E extends Bas
     }
     public void initToolBarData() {
         title = getView(R.id.toolbar_title);
-        toolbar = getView(R.id.toolbar);
+        toolbar = getView(R.id.bar_toolbar);
         toolbar.setTitle("");
         title.setText(getBarTitle());
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);

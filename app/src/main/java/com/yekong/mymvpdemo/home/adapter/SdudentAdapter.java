@@ -30,7 +30,7 @@ public class SdudentAdapter extends BaseAdapter<StudentEntity> {
 
     @Override
     public RecyclerView.ViewHolder getViewHolder(Context context, ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(context, R.layout.item_student, null));
+        return new ViewHolder(getView(R.layout.item_student));
     }
 
     @Override

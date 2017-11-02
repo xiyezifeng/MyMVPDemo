@@ -38,6 +38,13 @@ public class SharedUtil {
         editor.commit();
     }
 
+    /**
+     *
+     * @param key
+     * @param cls 返回数据类型
+     * @param <T>
+     * @return
+     */
     public <T> T getValue(String key, Class<T> cls){
         if (cls == Integer.class) {
             return (T) Integer.valueOf(sharedPreferences.getInt(key, -1));

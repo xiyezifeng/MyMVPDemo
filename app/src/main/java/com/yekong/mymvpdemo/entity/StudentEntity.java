@@ -3,13 +3,11 @@ package com.yekong.mymvpdemo.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.yekong.common.baseentity.BaseEntity;
-
 /**
  * Created by xigua on 2017/10/18.
  */
 
-public class StudentEntity extends BaseEntity implements Parcelable {
+public class StudentEntity  implements Parcelable {
     private String sName;
     private int sAge;
     private String sAvatar;

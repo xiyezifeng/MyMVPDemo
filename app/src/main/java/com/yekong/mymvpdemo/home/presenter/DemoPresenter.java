@@ -27,6 +27,7 @@ public class DemoPresenter extends DemoBarConstitute.Presenter{
 
             }
         }));
+
     }
 
     @Override

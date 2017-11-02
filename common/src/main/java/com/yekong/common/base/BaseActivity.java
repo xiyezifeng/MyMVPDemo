@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.jaeger.library.StatusBarUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.yekong.common.eventbus.EventBusManager;
 import com.yekong.common.utils.LogUtils;
 
 import java.lang.reflect.ParameterizedType;
@@ -30,6 +33,7 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
 
     protected Context context;
     Unbinder unbinder;
+    protected View rootView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,10 +49,14 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
         }
         setPresenter();
         if (getViewLayoutId()>0) {
-            setContentView(getViewLayoutId());
-            unbinder = ButterKnife.bind(this);
+            rootView = LayoutInflater.from(this).inflate(getViewLayoutId(), null);
+            setContentView(rootView);
+            unbinder = ButterKnife.bind(this,rootView);
             initView();
             initData();
+        }
+        if (enableEventBus()) {
+            EventBusManager.register(this);
         }
     }
 
@@ -56,12 +64,17 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        if (enableEventBus()) {
+            EventBusManager.unregister(this);
+        }
     }
 
     public <T> T getT(Object o, int i) {
         try {
-            return ((Class<T>) ((ParameterizedType) (o.getClass()
-                    .getGenericSuperclass())).getActualTypeArguments()[i])
+            return ((Class<T>) ((ParameterizedType) (
+                    o.getClass()
+                    .getGenericSuperclass()
+            )).getActualTypeArguments()[i])
                     .newInstance();
         } catch (InstantiationException e) {
         } catch (IllegalAccessException e) {
@@ -87,6 +100,8 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
         return (V) findViewById(id);
     }
 
+    public boolean enableEventBus(){return false;}
+
     public void setBarColor(int color , int alpha){
         StatusBarUtil.setColor(this, getResources().getColor(color),alpha);
     }
@@ -101,4 +116,8 @@ public  abstract  class BaseActivity<T extends BasePresenter , E extends BaseMod
     public abstract void initData();
     public abstract void initView();
 
+    protected <T> T getIntentValue(String key){
+        //getExtras.key 是否等于 getExtrasString 有待效验
+        return (T) getIntent().getExtras().get(key);
+}
 }

@@ -21,6 +21,8 @@
         <activity android:name=".home.view.activity.DemoStatusActivity" />
         <activity android:name=".home.view.activity.StudentActivity" />
         <activity android:name=".home.view.activity.DemoPhotoChooseActivity" />
+        <activity android:name=".home.view.activity.DemoBar2Activity" />
+        <activity android:name=".home.view.activity.DemoRingActivity" />
     </application>
 
 </manifest>

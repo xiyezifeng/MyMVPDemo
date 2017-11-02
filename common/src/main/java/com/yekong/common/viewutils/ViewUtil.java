@@ -3,9 +3,15 @@ package com.yekong.common.viewutils;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.WindowManager;
 import android.widget.EditText;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by xigua on 2017/10/17.
@@ -56,10 +62,28 @@ public class ViewUtil {
         });
 
     }
-
+    /**
+     * 设置添加屏幕的背景透明度
+     *
+     * @param alpha
+     */
     public static void setWindowScreenAlpha(Context context , float alpha){
         WindowManager.LayoutParams lp = ((AppCompatActivity)context).getWindow().getAttributes();
         lp.alpha = alpha; //0.0-1.0
         ((AppCompatActivity)context).getWindow().setAttributes(lp);
+    }
+    /**
+     * 生成部分颜色变化的字符串
+     */
+    public static SpannableString matcherSearchText(int color, String text, String keyword) {
+        SpannableString ss = new SpannableString(text);
+        Pattern pattern = Pattern.compile(keyword);
+        Matcher matcher = pattern.matcher(ss);
+        while (matcher.find()) {
+            int start = matcher.start();
+            int end = matcher.end();
+            ss.setSpan(new ForegroundColorSpan(color), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return ss;
     }
 }

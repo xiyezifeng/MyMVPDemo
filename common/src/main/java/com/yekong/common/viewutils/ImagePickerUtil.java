@@ -3,7 +3,6 @@ package com.yekong.common.viewutils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
@@ -63,7 +62,7 @@ public class ImagePickerUtil {
                 ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
                 return images;
             } else {
-                Toast.makeText(context, "没有数据", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "没有数据", Toast.LENGTH_SHORT).show();
                 return null;
             }
         }

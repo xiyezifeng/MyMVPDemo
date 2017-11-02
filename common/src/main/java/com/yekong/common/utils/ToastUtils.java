@@ -4,12 +4,14 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.yekong.common.constant.Constant;
+
 /**
  * Created by xigua on 2017/7/11.
  */
 
 public class ToastUtils {
-    private static boolean debug = true;
+    private static boolean debug = Constant.APP_DEBUG;
     private static ToastUtils instance ;
     private Context appContext;
     private static final String TAG = "toast";

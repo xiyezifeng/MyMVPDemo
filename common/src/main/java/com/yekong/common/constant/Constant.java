@@ -9,9 +9,9 @@ import com.yekong.common.R;
 public class Constant {
 
     public static final boolean APP_DEBUG = true;
-    public static final boolean CRASH = true;
+    public static final boolean CRASH = APP_DEBUG;
     public static final String BASEURL = "https://api.xabaili.com/apiservice";
-    public static final boolean BANNER_DEBUG = true;
+    public static final boolean BANNER_DEBUG = APP_DEBUG;
 
     /**
      * glide默认加载holder  error 图片

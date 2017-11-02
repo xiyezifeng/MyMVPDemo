@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.trello.rxlifecycle2.components.support.RxFragment;
+import com.yekong.common.eventbus.EventBusManager;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -43,6 +45,21 @@ public abstract class BaseFragment<T extends BasePresenter , E extends BaseModel
         presenter = getT(this, 0);
         model = getT(this, 1);
         setPresenter();
+        if (enableEventBus()) {
+            EventBusManager.register(this);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (enableEventBus()) {
+            EventBusManager.unregister(this);
+        }
+    }
+
+    public FragmentManager fragmentManager(){
+        return getChildFragmentManager();
     }
 
     @Nullable
@@ -54,7 +71,7 @@ public abstract class BaseFragment<T extends BasePresenter , E extends BaseModel
         return rootView;
     }
 
-
+    public boolean enableEventBus(){return false;}
 
     @Override
     public void onAttach(Context context) {
